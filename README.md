@@ -114,3 +114,49 @@ python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018C-v1_04April2020 -i Inputs_ScoutingCaloHT/InputList_Run2018C-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018D-v1_04April2020 -i Inputs_ScoutingCaloHT/InputList_Run2018D-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
 ```
+
+
+## Find the Processed Lumi (Only CERN Lxplus - not working on LPC)
+
+
+#### Create Processed Lumi File from Crab (LPC)
+
+```bash
+crab report -d Output_ScoutingCaloHT/ScoutingCaloHT_Run201*_*********_********_****
+```
+> This will create `processedLumis.json` file under this path: `workdir/crab_ScoutingCaloHT__Run*__RAW/results/`
+
+> You need to copy your processed Lumi json file to your lxplus area
+
+
+#### Setup BRIL-CALC (lxplus)
+```bash
+cd
+cd .local/bin/
+export PATH=$HOME/.local/bin:/afs/cern.ch/cms/lumi/brilconda-1.1.7/bin:$PATH
+pip install --install-option="--prefix=$HOME/.local" brilws
+```
+
+
+#### Copy `processedLumis.json` file to your lxplus area (LPC)
+> 
+```bash
+scp -r processedLumis.json <username>@lxplus.cern.ch:.local/bin/201*_processedLumis.json
+```
+
+#### Find the Processed Lumi Value (lxplus)
+
+```bash
+brilcalc lumi -b "STABLE BEAMS" --byls --normtag /cvmfs/cms-bril.cern.ch/cms-lumi-pog/Normtags/normtag_PHYSICS.json -i 201*_processedLumis.json -u /fb
+```
+
+
+
+
+
+
+
+
+
+
+
