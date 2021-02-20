@@ -42,8 +42,11 @@ https://twiki.cern.ch/twiki/bin/view/CMS/PdmV
 
 
 ```bash
+2016:
 wget https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions16/13TeV/Final/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt .
+2017:
 wget https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/Final/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt .
+2018:
 wget https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions18/13TeV/PromptReco/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt .
 ```
 
@@ -55,8 +58,11 @@ https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions?redirec
 
 
 ```bash
+2016:
 80X_dataRun2_HLT_v12
+2017:
 92X_dataRun2_HLT_v7
+2018:
 101X_dataRun2_HLT_v7
 ```
 
