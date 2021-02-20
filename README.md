@@ -106,3 +106,11 @@ python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2017
 ```
 
 
+#### 2018
+
+```bash
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018A-v1_27Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2018A-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018B-v1_04April2020 -i Inputs_ScoutingCaloHT/InputList_Run2018B-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018C-v1_04April2020 -i Inputs_ScoutingCaloHT/InputList_Run2018C-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018D-v1_04April2020 -i Inputs_ScoutingCaloHT/InputList_Run2018D-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+```
