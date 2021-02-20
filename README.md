@@ -1,2 +1,4 @@
-# dijetScouting
-Low Mass Dijet Scouting with Calo-Scouting Technique
+# Instructions for Low Mass Dijet Scouting with Calo-Scouting Technique
+
+
+
