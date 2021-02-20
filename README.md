@@ -191,6 +191,7 @@ vi Inputs_QCD_MC_2017/InputList_QCD_Pt_*to*.txt
 ```
 
 > Write the following line into the `InputList_QCD_Pt_*to*.txt` file and save it.
+> Don't forget to change *to* part with mass-range.
 
 ```bash
 /QCD_Pt_*to*_TuneCP5_13TeV_pythia8/RunIIFall17DRPremix-PU2017_94X_mc2017_realistic_v11_*/AODSIM -1 1 94X_mc2017_realistic_v11
@@ -202,6 +203,7 @@ vi Inputs_QCD_MC_2017/InputList_QCD_Pt_*to*.txt
 
 
 ## Send MC Datasets to Crab
+
 ```bash
 python createAndSubmitMC.py -d Output_QCD_MC_2017/ -v QCD_Pt_*to*_02Feb2020 -i Inputs_QCD_MC_2017/InputList_QCD_Pt_*to*.txt -t crab3_template_MC.py -c ../flat-MC-calo_cfg.py --submit
 ```
@@ -217,7 +219,7 @@ python createAndSubmitMC.py -d Output_QCD_MC_2017/ -v QCD_Pt_*to*_02Feb2020 -i I
 # Step #3
 
 > We created the root files from the datasets in step #1.
-> In step #2, our goal is to pass these root files through certain selection criteria and apply the necessary JECs.
+> In step #3, our goal is to apply certain selection criteria to these root files and apply the necessary JECs.
 
 ## Condor Instructions (Reduced NTuple)
 
@@ -352,6 +354,8 @@ make clean
 make
 ```
 
+> ps. we're using same JEC files for 2017 and 2018 since the 2018 JECs are not working properly and since same JECs were used for the data taking.
+
 ## Create Necessary Files for Condor
 
 ```bash
@@ -410,13 +414,61 @@ sed -i -e 's/\r//g' <fileName>
 
 # Step #4
 
+> We created the MC root files from the datasets in step #2.
+> In step #4, our goal is to apply certain selection criteria to these MC root files and apply the necessary JECs.
+
+```bash
+cd CMSSW_9_4_0/src/CMSDIJET/DijetRootTreeAnalyzer/dijetCondor/
+cmsenv
+voms-proxy-init --voms cms --valid 300:00
+```
+
+## Before Sending To Condor
+
+> Checked the analysis class file `analysisClass_mainDijetCaloScoutingSelection_2017.C` in `autoCondorOne.sh` and set a proper class file.
+> Change the eosPath in `autoCondorOne.sh` script.
+
+```bash
+vi autoCondorOne.sh
+```
+
+> Set the proper JSON file in `cutFile_mainDijetCaloScoutingSelection.txt` file.
+
+```bash
+cd ..
+vi config/cutFile_mainDijetCaloScoutingSelection.txt
+```
+
+> ps. we're using same JEC files for 2017 and 2018 since the 2018 JECs are not working properly and since same JECs were used for the data taking.
 
 
+## Create List From Big Ntuples (MC)
+
+```bash
+cd dijetCondor/
+vi CreateQCDList.csh
+```
+> Change the eos path in the `CreateQCDList.csh` script.
+
+```bash
+source CreateQCDList.csh
+```
+
+## Send All QCD samples to Condor
+
+> Change the eosPath in `fullAutoQCDCondor.csh` script.
+
+```bash
+source fullAutoQCDCondor.csh
+```
 
 
+## Send QCD Samples one by one to Condor
 
-
-
+```bash
+source autoCondorOne.sh <ListName(without .txt)> <ListFolderName> <EOS QCD Path>
+source autoCondorOne.sh QCD_Pt_15to30 QCD2017Lists /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/QCD_MC//QCD_Pt_15to30_TuneCP5_13TeV_pythia8/
+```
 
 ------------
 
