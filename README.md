@@ -154,11 +154,31 @@ brilcalc lumi -b "STABLE BEAMS" --byls --normtag /cvmfs/cms-bril.cern.ch/cms-lum
 
 
 
+# Step #2
+## Condor Instructions (Reduced NTuple)
+
+```bash
+cd CMSSW_9_4_0/src/CMSDIJET/
+cp -r /uscms_data/d3/asimsek/DiJet2018/CMSSW_9_4_0/src/CMSDIJET/DijetRootTreeAnalyzer/ .
+cd DijetRootTreeAnalyzer/
+cmsenv
+scram b -j 4
+voms-proxy-init --voms cms --valid 300:00
+```
+
+## Create List From Big NTuples
+
+> ps: change the path of the big ntuple files and create list of the big ntuple roots
 
 
-
-
-
+```bash
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016B-v2__RAW/200212_185539/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016B-v2.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016C-v2__RAW/200212_205441/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016C-v2.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016D-v2__RAW/200212_210139/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016D-v2.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016E-v2__RAW/200212_213500/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016E-v2.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016F-v1__RAW/200212_214158/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016F-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016G-v1__RAW/200212_214338/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016G-v1.txt
+```
 
 
 
