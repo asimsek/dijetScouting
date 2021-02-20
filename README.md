@@ -161,11 +161,62 @@ crab remake --task 200212_185539:asimsek_crab_ScoutingCaloHT__Run2016B-v2__RAW
 ```
 
 
+------------
+
+------------
+
+------------
+
 
 
 # Step #2
 
-> We created the root files from the datasets in step #1. 
+> There is 1-2% difference between all years in terms of QCD MC samples. Therefore, we used the 2017 QCD MC samples for all years.
+
+## Find MC Datasets for Run-II
+
+https://cmsweb.cern.ch/das/
+
+```
+dataset status=* dataset=/QCD_Pt_*to*_TuneCP5_13TeV_pythia8/RunIIFall17DRPremix-PU2017_94X_mc2017_realistic_v11*/AODSIM
+```
+
+## MC CRAB Instructions (MC Big NTuple)
+
+```bash
+cd CMSSW_9_4_0/src/CMSDIJET/DijetScoutingRootTreeMaker/prod/submitJobsWithCrab3
+cmsenv
+mkdir -p Inputs_QCD_MC_2017/
+vi Inputs_QCD_MC_2017/InputList_QCD_Pt_*to*.txt
+```
+
+> Write the following line into the `InputList_QCD_Pt_*to*.txt` file and save it.
+
+```bash
+/QCD_Pt_*to*_TuneCP5_13TeV_pythia8/RunIIFall17DRPremix-PU2017_94X_mc2017_realistic_v11_*/AODSIM -1 1 94X_mc2017_realistic_v11
+```
+
+> Do the same thing for each mass range (50to80, 80to120, 120to170, 170to300, 300to470, 470to600, 600to800, 800to1000, 1000to1400, 1400to1800, 1800to2400, 2400to3200, 3200toInf)
+
+`-1` for analyzing all dataset, `1` is the root size per job, `94X_mc2017_realistic_v11` is the global tag
+
+
+## Send MC Datasets to Crab
+```bash
+python createAndSubmitMC.py -d Output_QCD_MC_2017/ -v QCD_Pt_*to*_02Feb2020 -i Inputs_QCD_MC_2017/InputList_QCD_Pt_*to*.txt -t crab3_template_MC.py -c ../flat-MC-calo_cfg.py --submit
+```
+
+
+------------
+
+------------
+
+------------
+
+
+# Step #3
+
+> We created the root files from the datasets in step #1.
 > In step #2, our goal is to pass these root files through certain selection criteria and apply the necessary JECs.
 
 ## Condor Instructions (Reduced NTuple)
@@ -351,7 +402,7 @@ sed -i -e 's/\r//g' <fileName>
 
 
 
-# Step #3
+# Step #4
 
 > We have produced all the necessary root files so far. Now we can start analyzing.
 
@@ -488,28 +539,44 @@ python CalibrateDataset.py --year 2018 --lumi 59.533 --root CaloScoutingHT2018AL
 
 ## Setting Limits
 
+> Don't forget to make the changes in `findLimitRMax.sh` script (if necessary!).
+
+```bash
+source findLimitRMax.sh <configFileName> <year> <Lumi> <rMax> <signalType>
+```
+
+**2016**
+```bash
+source findLimitRMax.sh dijet_5Param 2016 27224 15.4 gg
+source findLimitRMax.sh dijet_5Param 2016 27224 15.9 qg
+source findLimitRMax.sh dijet_5Param 2016 27224 16.6 qq
+```
+
+**2017**
+
+```bash
+source findLimitRMax.sh dijet_5Param 2017 35449 2.6 gg
+source findLimitRMax.sh dijet_5Param 2017 35449 16.8 qg
+source findLimitRMax.sh dijet_5Param 2017 35449 11.4 qq
+```
+
+**2018**
+
+```bash
+source findLimitRMax.sh dijet_5Param 2018 59533 18.34 gg
+source findLimitRMax.sh dijet_5Param 2018 59533 16.5 qg
+source findLimitRMax.sh dijet_5Param 2018 59533 19.8 qq
+```
 
 
 
+## Significance
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```bash
+source significancePlots.sh gg 2016 27.224 15.4 CaloDijet2016
+source significancePlots.sh qg 2016 27.224 15.9 CaloDijet2016
+source significancePlots.sh qq 2016 27.224 16.6 CaloDijet2016
+```
 
 
 
