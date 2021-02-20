@@ -139,7 +139,7 @@ pip install --install-option="--prefix=$HOME/.local" brilws
 
 
 #### Copy `processedLumis.json` file to your lxplus area (LPC)
-> 
+
 ```bash
 scp -r processedLumis.json <username>@lxplus.cern.ch:.local/bin/201*_processedLumis.json
 ```
@@ -155,6 +155,10 @@ brilcalc lumi -b "STABLE BEAMS" --byls --normtag /cvmfs/cms-bril.cern.ch/cms-lum
 
 
 # Step #2
+
+> We created the root files from the datasets in step #1. 
+> In step #2, our goal is to pass these root files through certain selection criteria and apply the necessary JECs.
+
 ## Condor Instructions (Reduced NTuple)
 
 ```bash
@@ -170,7 +174,7 @@ voms-proxy-init --voms cms --valid 300:00
 
 > ps: change the path of the big ntuple files and create list of the big ntuple roots
 
-
+**2016**
 ```bash
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016B-v2__RAW/200212_185539/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016B-v2.txt
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016C-v2__RAW/200212_205441/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016C-v2.txt
@@ -179,6 +183,89 @@ ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCalo
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016F-v1__RAW/200212_214158/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016F-v1.txt
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016G-v1__RAW/200212_214338/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2016G-v1.txt
 ```
+
+**2017**
+
+```bash
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017C-v1__RAW/200128_222324/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017C-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017D-v1__RAW/200129_152702/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017D-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017E-v1__RAW/200129_155404/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017E-v1.txt
+ls -v1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017F-v1__RAW/200129_155659/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017F-v1.txt
+```
+
+
+**2018**
+
+```bash
+ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018A-v1__RAW/200227_222554/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018A-v1.txt
+ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018B-v1__RAW/200404_195335/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018B-v1.txt
+ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018C-v1__RAW/200404_081100/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018C-v1.txt
+ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018D-v1__RAW/200405_044054/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018D-v1.txt
+```
+
+
+## Before sending the condor
+
+```bash
+cd dijetCondor
+rm makeMcJobs
+vi makeMcJobs.cc
+```
+> Change the 3 paths in the `makeMcJobs.cc` file according to your own lpc area. (batchSubmitDir, yPARAM2)
+
+
+> Change year, dataset type, path for the root files to be created, etc. in the `tmpSH_v01.csh` file
+
+
+```bash
+vi tmpSH_v01.csh
+```
+
+**Compile the script:**
+```bash
+g++ `root-config --cflags` -o makeMcJobs makeMcJobs.cc `root-config --glibs` 
+```
+
+> Make necessary changes to the following files if you're using different CMSSW version or JSON file.
+
+```bash
+vi prepareCondor.csh -> Change CMSSW version (if necessary!)
+vi checkJobdir.csh -> Change CMSSW & Json File.
+vi tmpJDL_v01.jdl -> Change CMSSW version and Json File.
+```
+
+## Set root paths into the rootNtupleClass.h File
+
+> **Note: You should use the following codes separately according to the dataset you will analyze. ie. only first command line of 2016 commands for 2016B**
+> ./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016B-v2__RAW/200212_185539/0000/ScoutingCaloHT__Run2016B-v2__RAW_1.root -t dijetscouting/events
+
+**2016**
+```bash
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016B-v2__RAW/200212_185539/0000/ScoutingCaloHT__Run2016B-v2__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016C-v2__RAW/200212_205441/0000/ScoutingCaloHT__Run2016C-v2__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016D-v2__RAW/200212_210139/0000/ScoutingCaloHT__Run2016D-v2__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016E-v2__RAW/200212_213500/0000/ScoutingCaloHT__Run2016E-v2__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016F-v1__RAW/200212_214158/0000/ScoutingCaloHT__Run2016F-v1__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016G-v1__RAW/200212_214338/0000/ScoutingCaloHT__Run2016G-v1__RAW_1.root -t dijetscouting/events
+```
+
+**2017**
+```bash
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017C-v1__RAW/200128_222324/0000/ScoutingCaloHT__Run2017C-v1__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017D-v1__RAW/200129_152702/0000/ScoutingCaloHT__Run2017D-v1__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017E-v1__RAW/200129_155404/0000/ScoutingCaloHT__Run2017E-v1__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017F-v1__RAW/200129_155659/0000/ScoutingCaloHT__Run2017F-v1__RAW_1.root -t dijetscouting/events
+```
+
+**2018**
+```bash
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018A-v1__RAW/200227_222554/0000/ScoutingCaloHT__Run2018A-v1__RAW_1.root -t dijetscouting/events
+- ./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018B-v1__RAW/200404_195335/0000/ScoutingCaloHT__Run2018B-v1__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018C-v1__RAW/200404_081100/0000/ScoutingCaloHT__Run2018C-v1__RAW_1.root -t dijetscouting/events
+./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018D-v1__RAW/200405_044054/0000/ScoutingCaloHT__Run2018D-v1__RAW_1.root -t dijetscouting/events
+```
+
+
 
 
 
