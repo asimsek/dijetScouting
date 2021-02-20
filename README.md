@@ -323,7 +323,10 @@ source zz_submitAllScoutingCaloHT201*_JEC_CaloL1L2L3_PFL2L3Residual.csh
 
 ## Usefull Condor Commands
 
-**Remove Held Jobs:**
+> Currently there are 3 LPC condors (`lpcschedd1`, `lpcschedd2` and `lpcschedd3`) 
+> It is necessary to remove or release them separately.
+
+**Remove All Held Jobs:**
 ```bash
 condor_rm -const 'jobstatus==5' -name lpcschedd1
 ```
@@ -333,7 +336,7 @@ condor_rm -const 'jobstatus==5' -name lpcschedd1
 condor_q -hold -af HoldReason
 ```
 
-**Release Held Jobs:**
+**Release All Held Jobs (condor will try to execute them, again):**
 ```bash
 condor_release -const 'jobstatus==5' -name lpcschedd1
 ```
