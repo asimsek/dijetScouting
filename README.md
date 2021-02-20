@@ -54,8 +54,11 @@ Change the JSON File and other necessary information in the `crab3_template_data
 https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions?redirectedfrom=CMS.SWGuideFrontierConditions#Global_Tags_for_2016_data_taking
 
 
-
-
+```python
+80X_dataRun2_HLT_v12
+92X_dataRun2_HLT_v7
+101X_dataRun2_HLT_v7
+```
 
 
 
