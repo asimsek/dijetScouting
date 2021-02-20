@@ -17,7 +17,7 @@ https://cmsweb.cern.ch/das/
 | /ScoutingCaloHT/Run2016F-v1/RAW |
 | /ScoutingCaloHT/Run2016G-v1/RAW |
 
-
+# Step #1
 ## CRAB Instructions (Big NTuple)
 
 ```bash
@@ -149,6 +149,8 @@ scp -r processedLumis.json <username>@lxplus.cern.ch:.local/bin/201*_processedLu
 ```bash
 brilcalc lumi -b "STABLE BEAMS" --byls --normtag /cvmfs/cms-bril.cern.ch/cms-lumi-pog/Normtags/normtag_PHYSICS.json -i 201*_processedLumis.json -u /fb
 ```
+
+> ps: don't forget to change the name of `processedLumis.json` file in command lines
 
 
 
