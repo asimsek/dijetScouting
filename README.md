@@ -84,20 +84,25 @@ vi InputList_Run2016B-v1_ScoutingCaloHT.txt
 `-1` for analyzing all dataset, `40` is the root size per job, `92X_dataRun2_HLT_v7` is the global tag
 
 
-## Send the Dataset to the Crab
+## Send the Dataset to the Crab
 
-####2016
+#### 2016
 ```bash
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2016B-v2_12Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2016B-v2_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
-
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2016C-v2_12Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2016C-v2_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
-
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2016D-v2_12Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2016D-v2_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
-
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2016E-v2_12Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2016E-v2_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
-
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2016F-v1_12Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2016F-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
-
 python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2016G-v1_12Feb2020 -i Inputs_ScoutingCaloHT/InputList_Run2016G-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
 ```
+
+#### 2017
+
+```bash
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2017C-v1_Jan-28-2020 -i Inputs_ScoutingCaloHT/InputList_Run2017C-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2017D-v1_Jan-28-2020 -i Inputs_ScoutingCaloHT/InputList_Run2017D-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2017E-v1_Jan-28-2020 -i Inputs_ScoutingCaloHT/InputList_Run2017E-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2017F-v1_Jan-28-2020 -i Inputs_ScoutingCaloHT/InputList_Run2017F-v1_ScoutingCaloHT.txt -t crab3_template_data.py -c ../flat-data-calo_cfg.py --submit
+```
+
 
