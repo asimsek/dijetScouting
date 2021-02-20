@@ -429,7 +429,7 @@ source plotterCondor_DatavsMC4.sh CaloScoutingHT2016ALL_DatavsQDCMC_DE13_M489_wL
 
 
 
-> If you need to produce locally and seperately please use the following command lines.
+> If you need to produce locally and seperately please use the following command lines. Don't forget to give proper data list, MC list, lumi value etc.
 
 ```bash
 python DrawFromTree_data4.py --var mjj --xmin 1 --xmax 14000 --xtitle 'Dijet mass [MeV]' --bins 13999 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --logy --rebin -1 --units GeV
@@ -445,9 +445,32 @@ python DrawFromTree_data4.py --var Dijet_MassAK4 --xmin 1 --xmax 14000 --xtitle 
 ```
 
 
+## Fit
+
+> After having a proper mjj results, you can fit the data with standard dijet fit functions.
 
 
+```bash
+python python/BinnedFit.py -c config/dijet_5param.config -l <lumi> --mass 750_1200_1600 -m gg_qg_qq --xsec 9.5_8.2e-1_2.2e-1 -s <ggResonanceRootFile>,<qgResonanceRootFile>,<qqResonanceRootFile> <eosPathContainingMjjRootFile>/histo_data_mjj_fromTree.root -b <boxName> -d <outputFolder>/<boxName>_dijet_5Param/ --fit-spectrum
+```
 
+
+> Example command lines for all individual years can be found below.
+
+**2016**
+```bash
+python python/BinnedFit.py -c config/dijet_5param.config -l 27225 --mass 750_1200_1600 -m gg_qg_qq --xsec 9.5_8.2e-1_2.2e-1 -s inputs/ResonanceShapes_gg_13TeV_CaloScouting_Spring16.root,inputs/ResonanceShapes_qg_13TeV_CaloScouting_Spring16.root,inputs/ResonanceShapes_qq_13TeV_CaloScouting_Spring16.root /eos/uscms/store/group/lpcjj/CaloScouting/Plots/CaloScoutingHT2016ALL_DatavsQDCMC_DE13_M489_wL2L3Residual_26May2020_0009/histo_data_mjj_fromTree.root -b CaloDijet2016 -d fits_DE13_wL2L3Residual_27May2020/CaloDijet2016_dijet_5Param/ --fit-spectrum
+```
+
+**2017**
+```bash
+python python/BinnedFit.py -c config/dijet_5param.config -l 35449 --mass 750_1200_1600 -m gg_qg_qq --xsec 9.5_8.2e-1_2.2e-1 -s inputs/ResonanceShapes_gg_13TeV_CaloScouting_Spring16.root,inputs/ResonanceShapes_qg_13TeV_CaloScouting_Spring16.root,inputs/ResonanceShapes_qq_13TeV_CaloScouting_Spring16.root /eos/uscms/store/group/lpcjj/CaloScouting/Plots/CaloScoutingHT2017ALL_DatavsQDCMC_DE13_M489_wL2L3Residual_26May2020_0020/histo_data_mjj_fromTree.root -b CaloDijet2017 -d fits_DE13_wL2L3Residual_27May2020/CaloDijet2017_dijet_5Param/ --fit-spectrum
+```
+
+**2018**
+```bash
+python python/BinnedFit.py -c config/dijet_5param.config -l 59533 --mass 750_1200_1600 -m gg_qg_qq --xsec 9.5_8.2e-1_2.2e-1 -s inputs/ResonanceShapes_gg_13TeV_CaloScouting_Spring16.root,inputs/ResonanceShapes_qg_13TeV_CaloScouting_Spring16.root,inputs/ResonanceShapes_qq_13TeV_CaloScouting_Spring16.root /eos/uscms/store/group/lpcjj/CaloScouting/Plots/CaloScoutingHT2018ALL_DatavsQDCMC_DE13_M489_wL2L3Residual_26May2020_0036/histo_data_mjj_fromTree.root -b CaloDijet2018 -d fits_DE13_wL2L3Residual_27May2020/CaloDijet2018_dijet_5Param/ --fit-spectrum
+```
 
 
 
