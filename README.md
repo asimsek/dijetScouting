@@ -153,6 +153,15 @@ brilcalc lumi -b "STABLE BEAMS" --byls --normtag /cvmfs/cms-bril.cern.ch/cms-lum
 > ps: don't forget to change the name of `processedLumis.json` file in command lines
 
 
+## Usefull Crab Commands
+
+```bash
+crab remake --task <task_id>
+crab remake --task 200212_185539:asimsek_crab_ScoutingCaloHT__Run2016B-v2__RAW
+```
+
+
+
 
 # Step #2
 
@@ -172,7 +181,12 @@ voms-proxy-init --voms cms --valid 300:00
 
 ## Create List From Big NTuples
 
-> ps: change the path of the big ntuple files and create list of the big ntuple roots
+> ps: Don't forget to change the path of the big ntuple files and create the list of big ntuple roots with following command lines
+
+```bash
+cd dijetCondor
+```
+
 
 **2016**
 ```bash
@@ -207,7 +221,6 @@ ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloH
 ## Before sending the condor
 
 ```bash
-cd dijetCondor
 rm makeMcJobs
 vi makeMcJobs.cc
 ```
@@ -229,15 +242,19 @@ g++ `root-config --cflags` -o makeMcJobs makeMcJobs.cc `root-config --glibs`
 > Make necessary changes to the following files if you're using different CMSSW version or JSON file.
 
 ```bash
-vi prepareCondor.csh -> Change CMSSW version (if necessary!)
-vi checkJobdir.csh -> Change CMSSW & Json File.
-vi tmpJDL_v01.jdl -> Change CMSSW version and Json File.
+vi prepareCondor.csh -> Change CMSSW version. (if necessary!)
+vi checkJobdir.csh -> Change CMSSW & Json File. (if necessary!)
+vi tmpJDL_v01.jdl -> Change CMSSW version and Json File. (if necessary!)
 ```
 
-## Set root paths into the rootNtupleClass.h File
+## Set Root Paths into the rootNtupleClass.h File
 
 > **Note: You should use the following codes separately according to the dataset you will analyze. ie. only first command line of 2016 commands for 2016B**
 
+
+```bash
+cd $CMSSW_BASE/src/CMSDIJET/DijetRootTreeAnalyzer
+```
 
 **2016**
 ```bash
@@ -266,25 +283,68 @@ vi tmpJDL_v01.jdl -> Change CMSSW version and Json File.
 ```
 
 
+## Compile
+
+> You should change the L1,L2,L3 and L2L3Residual JEC file names in `analysisClass_mainDijetCaloScoutingSelection_201*.C` file under `src` folder
+> ie. src/analysisClass_mainDijetCaloScoutingSelection_2016.C for 2016B/C/D/E/F/G datasets
+
+> You need to use these command lines for each dataset (2016B, 2016C, 2017D, 2018A,... etc.), each times.
+
+```bash
+vi src/analysisClass_mainDijetCaloScoutingSelection_201*.C
+```
 
 
+```bash
+ln -sf analysisClass_mainDijetCaloScoutingSelection_201*.C src/analysisClass.C
+make clean
+make
+```
+
+## Create Necessary Files for Condor
+
+```bash
+cd dijetCondor
+```
 
 
+```bash
+./makeMcJobs <JobName> <bigNtupleRootList.txt>
+./makeMcJobs ScoutingCaloHT201*_JEC_AK4CaloHLTL1L2L3_L2L3Residual CaloScoutingHT201*.txt
+```
 
 
+## Send to Condor
 
+```bash
+cd bjobsScoutingCaloHT201*_JEC_CaloL1L2L3_PFL2L3Residual_********/
+source zz_submitAllScoutingCaloHT201*_JEC_CaloL1L2L3_PFL2L3Residual.csh
+```
 
+## Usefull Condor Commands
 
+**Remove Held Jobs:**
+```bash
+condor_rm -const 'jobstatus==5' -name lpcschedd1
+```
 
+**Hold Reason:**
+```bash
+condor_q -hold -af HoldReason
+```
 
+**Release Held Jobs:**
+```bash
+condor_release -const 'jobstatus==5' -name lpcschedd1
+```
 
+**For more:**
+https://uscms.org/uscms_at_work/computing/setup/condor_refactor.shtml#name
 
-
-
-
-
-
-
+**Get rid of the ^M Problem:**
+```bash
+sed -i -e 's/\r//g' <fileName>
+```
 
 
 
