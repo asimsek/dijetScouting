@@ -416,6 +416,74 @@ cat CaloScoutingHT2018*-v1_reduced.txt > CaloScoutingHT2018ALL_reduced.txt
 ```
 
 
+## Kinematic Plots (mjj, eta, phi, DeltaEta, DeltaPhi)
+
+> The following script is creating condor jobs to prepare kinematic plots. 
+> You need to change my eos paths with yours.
+
+```bash
+source plotterCondor_DatavsMC4.sh <JobName> <DataRootList> <MCRootList> <lumi>
+
+source plotterCondor_DatavsMC4.sh CaloScoutingHT2016ALL_DatavsQDCMC_DE13_M489_wL2L3Residual_26May2020_0009 CaloScoutingHT2016ALL_reduced.txt QCD2017-v1_reduced_new.txt 27225
+```
+
+
+
+> If you need to produce locally and seperately please use the following command lines.
+
+```bash
+python DrawFromTree_data4.py --var mjj --xmin 1 --xmax 14000 --xtitle 'Dijet mass [MeV]' --bins 13999 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --logy --rebin -1 --units GeV
+python DrawFromTree_data4.py --var pTWJ_j1 --xmin 30 --xmax 5000 --xtitle 'pT(j1) [GeV]' --bins 200 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --rebin 5 --units GeV
+python DrawFromTree_data4.py --var pTWJ_j2 --xmin 30 --xmax 5000 --xtitle 'pT(j2) [GeV]' --bins 200 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --rebin 5 --units GeV
+python DrawFromTree_data4.py --var etaWJ_j1 --xmin -3 --xmax 3 --xtitle '#eta(j1)' --bins 200 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --rebin 5
+python DrawFromTree_data4.py --var etaWJ_j2 --xmin -3 --xmax 3 --xtitle '#eta(j2)' --bins 200 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --rebin 5
+python DrawFromTree_data4.py --var deltaETAjj --xmin 0 --xmax 1.3 --xtitle '#Delta#eta(jj)' --bins 200 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --logy --rebin 5
+python DrawFromTree_data4.py --var deltaPHIjj --xmin 0 --xmax 3.14 --xtitle '|#Delta#phi(jj)|' --bins 200 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --logy --rebin 5
+python DrawFromTree_data4.py --var phiWJ_j1  --xmin -3.1415 --xmax 3.1415  --xtitle '#phi (j1)' --bins 200  --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --rebin 5
+python DrawFromTree_data4.py --var phiWJ_j2  --xmin -3.1415 --xmax 3.1415  --xtitle '#phi (j2)' --bins 200  --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --rebin 5
+python DrawFromTree_data4.py --var Dijet_MassAK4 --xmin 1 --xmax 14000 --xtitle 'Dijet Mass AK4 [GeV]' --bins 13999 --rebin -1 --outputDir ${outputFile}/ --inputList_1 ${inputDataList} --inputMC ${inputMC} --lumi ${lumi} --logy --units GeV
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
