@@ -401,8 +401,32 @@ sed -i -e 's/\r//g' <fileName>
 ```
 
 
+------------
+
+------------
+
+------------
+
 
 # Step #4
+
+
+
+
+
+
+
+
+
+------------
+
+------------
+
+------------
+
+
+
+# Step #5
 
 > We have produced all the necessary root files so far. Now we can start analyzing.
 
@@ -412,6 +436,7 @@ sed -i -e 's/\r//g' <fileName>
 cd DijetScouting/
 cmsrel CMSSW_7_4_14
 cd CMSSW_7_4_14/src/
+cmsenv
 cp -r /uscms_data/d3/asimsek/DiJet2018/CMSSW_7_4_14/src/CMSDIJET .
 scram b -j 4
 cd CMSDIJET/DijetRootTreeAnalyzer
