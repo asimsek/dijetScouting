@@ -19,7 +19,18 @@ https://cmsweb.cern.ch/das/
 
 
 
+## CRAB Instructions (Big NTuple)
 
+```bash
+mkdir -p DijetScouting
+cd DijetScouting/
+cmsrel CMSSW_9_4_0
+cd CMSSW_9_4_0/src
+cp -r /uscms_data/d3/asimsek/DiJet2018/CMSSW_9_4_0/src/CMSDIJET .
+cd CMSDIJET/DijetScoutingRootTreeMaker/
+scram b -j 4
+cd prod/
+```
 
 
 
