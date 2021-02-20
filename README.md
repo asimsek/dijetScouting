@@ -67,6 +67,22 @@ https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions?redirec
 ```
 
 
+```bash
+mkdir -p Inputs_ScoutingCaloHT/
+cd Inputs_ScoutingCaloHT/
+vi InputList_Run2016B-v1_ScoutingCaloHT.txt
+```
+
+> Write the following line into the `InputList_Run2016B-v1_ScoutingCaloHT.txt` file and save it.
+
+```bash
+/ScoutingCaloHT/Run2017C-v1/RAW -1 80 92X_dataRun2_HLT_v7
+```
+
+> Do the same thing for each datasets (2016, 2017 and 2018)
+
+
+
 
 
 
