@@ -474,6 +474,19 @@ python python/BinnedFit.py -c config/dijet_5param.config -l 59533 --mass 750_120
 
 
 
+## Scale and Calibrate 2017 and 2018 datasets
+
+> The 2017 and 2018 had different structure. So, we calibrated the 2017 and 2018 datasets with 2016 dataset leaving any systematic fluctuations.
+
+
+> Don't forget to change eos path of the mjj root file in `CalibrateDataset.py` script.
+
+```bash
+python CalibrateDataset.py --year 2017 --lumi 35.449 --root CaloScoutingHT2017ALL_DatavsQDCMC_DE13_M489_wL2L3Residual_26May2020_0020
+python CalibrateDataset.py --year 2018 --lumi 59.533 --root CaloScoutingHT2018ALL_DatavsQDCMC_DE13_M489_wL2L3Residual_26May2020_0036
+```
+
+## Setting Limits
 
 
 
