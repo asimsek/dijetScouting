@@ -668,16 +668,26 @@ source findLimitRMax.sh dijet_5Param 2018 59533 19.8 qq
 
 ## Significance
 
+**2016**
 ```bash
 source significancePlots.sh gg 2016 27.224 15.4 CaloDijet2016
 source significancePlots.sh qg 2016 27.224 15.9 CaloDijet2016
 source significancePlots.sh qq 2016 27.224 16.6 CaloDijet2016
 ```
 
+**2017**
+```bash
+source significancePlots.sh gg 2017 35.449 2.6 CaloDijet2017
+source significancePlots.sh qg 2017 35.449 16.8 CaloDijet2017
+source significancePlots.sh qq 2017 35.449 11.4 CaloDijet2017
+```
 
-
-
-
+**2018**
+```bash
+source significancePlots.sh gg 2018 59.533 18.34 CaloDijet2018
+source significancePlots.sh qg 2018 59.533 16.5 CaloDijet2018
+source significancePlots.sh qq 2018 59.533 19.8 CaloDijet2018
+```
 
 
 
