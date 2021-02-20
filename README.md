@@ -237,7 +237,7 @@ vi tmpJDL_v01.jdl -> Change CMSSW version and Json File.
 ## Set root paths into the rootNtupleClass.h File
 
 > **Note: You should use the following codes separately according to the dataset you will analyze. ie. only first command line of 2016 commands for 2016B**
-> ./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCaloHT/crab_ScoutingCaloHT__Run2016B-v2__RAW/200212_185539/0000/ScoutingCaloHT__Run2016B-v2__RAW_1.root -t dijetscouting/events
+
 
 **2016**
 ```bash
@@ -264,6 +264,28 @@ vi tmpJDL_v01.jdl -> Change CMSSW version and Json File.
 ./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018C-v1__RAW/200404_081100/0000/ScoutingCaloHT__Run2018C-v1__RAW_1.root -t dijetscouting/events
 ./scripts/make_rootNtupleClass.sh -f /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018D-v1__RAW/200405_044054/0000/ScoutingCaloHT__Run2018D-v1__RAW_1.root -t dijetscouting/events
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
