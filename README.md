@@ -127,7 +127,7 @@ python createAndSubmitCrab.py -d Output_ScoutingCaloHT -v ScoutingCaloHT_Run2018
 ```bash
 crab report -d Output_ScoutingCaloHT/ScoutingCaloHT_Run201*_*********_********_****
 ```
-> This will create `processedLumis.json` file under this path: `workdir/crab_ScoutingCaloHT__Run*__RAW/results/`
+> This will create `processedLumis.json` file under this path: `Output_ScoutingCaloHT/ScoutingCaloHT_Run201*_*/workdir/crab_ScoutingCaloHT__Run*__RAW/results/`
 
 > You need to copy your processed Lumi json file to your lxplus area
 
