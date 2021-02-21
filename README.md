@@ -134,8 +134,7 @@ crab report -d Output_ScoutingCaloHT/ScoutingCaloHT_Run201*_*********_********_*
 
 #### Setup BRIL-CALC (lxplus)
 ```bash
-cd
-cd .local/bin/
+cd ~/.local/bin/
 export PATH=$HOME/.local/bin:/afs/cern.ch/cms/lumi/brilconda-1.1.7/bin:$PATH
 pip install --install-option="--prefix=$HOME/.local" brilws
 ```
