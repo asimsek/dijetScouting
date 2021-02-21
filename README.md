@@ -508,7 +508,9 @@ cd DijetScouting/
 cmsrel CMSSW_7_4_14
 cd CMSSW_7_4_14/src/
 cmsenv
-cp -r /uscms_data/d3/asimsek/forgithub/for_CMSSW_7_4_14/CMSDIJET .
+git clone -b for_CMSSW_7_4_14 https://github.com/asimsek/dijetScouting.git
+mv dijetScouting/CMSDIJET .
+rm -r dijetScouting
 git clone -b dijetpdf_74X https://github.com/RazorCMS/HiggsAnalysis-CombinedLimit HiggsAnalysis/CombinedLimit
 cd HiggsAnalysis/CombinedLimit
 scram b -j 4
