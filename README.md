@@ -31,6 +31,7 @@ rm -r dijetScouting
 cd CMSDIJET/DijetScoutingRootTreeMaker/
 scram b -j 4
 cd prod/submitJobsWithCrab3/
+source /cvmfs/cms.cern.ch/crab3/crab.csh
 ```
 
 > ps: `CMSSW_9_4_0` working for all individual three years if it does not work, use `CMSSW_8_0_17` for **2016**, `CMSSW_9_4_0` for **2017** and `CMSSW_10_2_5_patch1` for **2018**.
@@ -207,6 +208,7 @@ dataset status=* dataset=/QCD_Pt_*to*_TuneCP5_13TeV_pythia8/RunIIFall17DRPremix-
 ```bash
 cd CMSSW_9_4_0/src/CMSDIJET/DijetScoutingRootTreeMaker/prod/submitJobsWithCrab3
 cmsenv
+source /cvmfs/cms.cern.ch/crab3/crab.csh
 mkdir -p Inputs_QCD_MC_2017/
 vi Inputs_QCD_MC_2017/InputList_QCD_Pt_*to*.txt
 ```
