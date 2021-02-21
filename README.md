@@ -25,7 +25,9 @@ mkdir -p DijetScouting
 cd DijetScouting/
 cmsrel CMSSW_9_4_0
 cd CMSSW_9_4_0/src
-cp -r /uscms_data/d3/asimsek/DiJet2018/CMSSW_9_4_0/src/CMSDIJET .
+git clone -b for_CMSSW_9_4_0 https://github.com/asimsek/dijetScouting.git
+mv dijetScouting/CMSDIJET .
+rm -r dijetScouting
 cd CMSDIJET/DijetScoutingRootTreeMaker/
 scram b -j 4
 cd prod/submitJobsWithCrab3/
