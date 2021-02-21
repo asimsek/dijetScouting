@@ -1,6 +1,6 @@
 # Instructions
 Low Mass Dijet Scouting with Calo-Scouting Technique
-> ps: These instructions have been prepared for the Fermilab LPC infrastructure.
+> ps: These instructions have been prepared for the Fermilab LPC.
 
 ## Find Datasets for Run-II
 
