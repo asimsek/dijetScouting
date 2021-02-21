@@ -280,17 +280,17 @@ ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2016/ScoutingCalo
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017C-v1__RAW/200128_222324/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017C-v1.txt
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017D-v1__RAW/200129_152702/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017D-v1.txt
 ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017E-v1__RAW/200129_155404/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017E-v1.txt
-ls -v1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017F-v1__RAW/200129_155659/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017F-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2017/ScoutingCaloHT/crab_ScoutingCaloHT__Run2017F-v1__RAW/200129_155659/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2017F-v1.txt
 ```
 
 
 **2018**
 
 ```bash
-ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018A-v1__RAW/200227_222554/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018A-v1.txt
-ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018B-v1__RAW/200404_195335/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018B-v1.txt
-ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018C-v1__RAW/200404_081100/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018C-v1.txt
-ls -1 /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018D-v1__RAW/200405_044054/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018D-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018A-v1__RAW/200227_222554/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018A-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018B-v1__RAW/200404_195335/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018B-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018C-v1__RAW/200404_081100/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018C-v1.txt
+ls -1v /eos/uscms/store/group/lpcjj/CaloScouting/rootTrees_big/2018/ScoutingCaloHT/crab_ScoutingCaloHT__Run2018D-v1__RAW/200405_044054/0000/*.root | sed -e 's\/eos/uscms\root://cmseos.fnal.gov/\g' > CaloScoutingHT2018D-v1.txt
 ```
 
 
